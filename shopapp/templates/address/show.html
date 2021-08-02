@@ -1,0 +1,65 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}VESIT | Adress{% endblock title %}
+
+{% block main %}
+    <div class="row my-md-5">
+
+        <div class="col-md-3 text-center">
+            <div class="fs-4">
+            {{request.user.get_full_name}}
+            </div>
+            <a href="{% url 'add_address' %}" class="btn  btn-primary my-md-3 w-100 rounded-pill ">Add Address</a>
+        </div>
+        
+        <div class="col-md-5 m-auto">
+        {% if address %}
+
+        {% for add in address %}
+            <table class="table table-sm border p-md-5 my-5 shadow-lg p-3 mb-5 bg-body rounded">
+        <thead>
+            <tr>
+            <th scope="col" colspan=2 class="text-center">Address {{forloop.counter}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td >Street : </td>
+                <td>{{add.street}}</td>
+            </tr>
+            <tr>
+                <td>Village/Area : </td>
+                <td>{{add.village}}</td>
+            </tr>
+            <tr>
+                <td> Distic: </td>
+                <td>{{add.district}}</td>
+            </tr>
+            <tr>
+                <td>State : </td>
+                <td>{{add.state}}</td>
+            </tr>
+            <tr>
+                <td>Pin Code : </td>
+                <td>{{add.pin_code}}</td>
+            </tr>
+            <tr>
+                <td>Mobile Number : </td>
+                <td>{{add.mobile}}</td>
+            </tr>
+             {% comment %} <tr>
+                <td colspan=2 class="text-center">
+                    <a href="" class="btn btn-warning btn-sm mx-3">Update</a>
+                    <a href="" class="btn btn-danger btn-sm mx-3">Delete</a>
+                </td>
+            </tr> {% endcomment %}
+        </tbody>
+        {% endfor %}
+</table>
+        {% else %}
+        <h1 class="baloo text-warning">No Adress Availble</h1>
+        {% endif %}
+        
+        </div>
+    
+    </div>
+{% endblock main %}

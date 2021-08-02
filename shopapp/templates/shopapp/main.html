@@ -1,0 +1,98 @@
+<!--Mobile carousel-->
+ <div class="my-2">
+  <h3 class="text-uppercase">Vesit Mobile Store</h3>
+<div class="owl-carousel owl-theme mt-2" id="mobile">   
+
+{% for mobile in mobiles %}
+
+<div class="card shadow p-3 mb-5 bg-body rounded " >
+  
+ 
+ <a href="{% url 'productdetail' mobile.id %}" class="d-block m-auto"> 
+    <img src="{{mobile.product_image.url}}" class="card-img-top img-fluid m-1" style="height:250px;width:160px" alt="...">
+ </a>
+
+
+  <div class="card-body">
+    <p class="card-text fw-bold fs-5">{{mobile.description|truncatewords:6}}</p>
+    <a href="{% url 'productdetail' mobile.id %}" class="btn btn-outline-success">Buy know</a>
+  </div>
+
+</div>
+{% endfor %}  
+</div>
+</div> 
+
+<!--Laptop carousel-->
+
+<div class="my-2">
+  <h3 class="text-uppercase">Vesit Laptop Store</h3>
+<div class="owl-carousel owl-theme mt-2" id="laptop">   
+
+{% for laptop in laptops %}
+
+<div class="card shadow p-3 mb-5 bg-body rounded " >
+  
+ 
+ <a href="{% url 'productdetail' laptop.id %}" class="d-block m-auto"> 
+    <img src="{{laptop.product_image.url}}" class="card-img-top img-fluid m-1" style="height:160px;width:160px" alt="...">
+ </a>
+ 
+
+  <div class="card-body">
+    <p class="card-text fw-bold fs-5">{{laptop.description|truncatewords:10}}</p>
+    <a href="{% url 'productdetail' laptop.id %}" class="btn btn-outline-success">Buy know</a>
+  </div>
+
+</div>
+{% endfor %}  
+</div>
+</div>
+<!--Top Wear carousel-->
+<div class="mt-2">
+  <h3 class="text-uppercase">Vesit Top Wears Store</h3>
+<div class="owl-carousel owl-theme mt-2" id="mobile">   
+
+{% for top in tops %}
+
+<div class="card shadow p-3 mb-5 bg-body rounded " >
+  
+
+ <a href="{% url 'productdetail' top.id %}" class="d-block m-auto"> 
+    <img src="{{top.product_image.url}}" class="card-img-top img-fluid m-1" style="height:250px;width:160px" alt="...">
+ </a>
+
+
+  <div class="card-body">
+    <p class="card-text fw-bold fs-5">{{top.description|truncatewords:8}}</p>
+    <a href="{% url 'productdetail' top.id %}" class="btn btn-outline-success">Buy know</a>
+  </div>
+
+</div>
+{% endfor %}  
+</div>
+</div> 
+
+<!--Bottom Wear-->
+<div class="mt-2">
+  <h3 class="text-uppercase">Vesit Bottom Wears Store</h3>
+
+<div class="owl-carousel owl-theme mt-2" id="mobile"> 
+{% for bottom in bottoms %}
+
+<div class="card shadow p-3 mb-5 bg-body rounded " >
+   <a href="{% url 'productdetail' bottom.id %}" class="d-block m-auto"> 
+    
+    <img src="{{bottom.product_image.url}}" class="card-img-top img-fluid m-1" style="height:250px;width:160px" alt="...">
+    
+ </a> 
+
+  <div class="card-body">
+    <p class="card-text fw-bold fs-5">{{bottom.description|truncatewords:6}}</p>
+    <a href="{% url 'productdetail' bottom.id %}" class="btn btn-outline-success">Buy know</a>
+  </div>
+
+</div>
+{% endfor %}  
+</div>
+</div> 

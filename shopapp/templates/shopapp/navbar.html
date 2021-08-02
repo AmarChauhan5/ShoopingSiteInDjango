@@ -1,0 +1,59 @@
+<!--Navigation Bar-->
+<nav class="navbar  baloo navbar-expand-lg navbar-light bg-white w-100 m-0 shadow-sm p-3 mb-3 bg-body rounded ">
+  <div class="container-fluid">
+    <a class="navbar-brand monoton fs-3" href="{% url 'home' %}">VESIT05</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          {% comment %} <a class="nav-link active" href="#">Link</a> {% endcomment %}
+        </li>
+        
+      </ul>
+      <div class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle active text-success align-middle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="material-icons right fs-5 align-middle">perm_identity</i>
+                {{request.user.get_full_name|capfirst}}
+                  </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% comment %} <li><a class="dropdown-item" href="#">Profile</a></li> {% endcomment %}
+              <li><a class="dropdown-item" href="{% url 'address' %}">Address</a></li>
+              <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Password Change</a></li>
+              <li><a class="dropdown-item" href="{% url 'orders' %}">My Order</a></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+        </li>
+            <li><a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a></li>
+            <li><a class="nav-link active" aria-current="page" href="{% url 'show_cart' %}">Cart</a></li>
+            {% else %}
+             <li><a class="nav-link active" aria-current="page" href="{% url 'signup' %}">SignUp</a></li>
+            <li><a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a></li> 
+          {% endif %}
+
+          <form class="d-flex">
+        <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-sm btn-outline-success" type="submit">Search</button>
+      </form>
+           
+        </ul>
+      </div>
+    
+      
+      
+    </div>
+  </div>
+</nav>
+<!--End NavBar-->

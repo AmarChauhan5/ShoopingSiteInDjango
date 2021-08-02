@@ -1,0 +1,52 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}VESIT | Order Summary{% endblock title %}
+
+{% block main %}
+<div class="row">
+    <h3 class="text-center">Order Summry Cart</h3>
+    <div class="col-md-7">
+    <div>
+    
+            {% for item in cart %}
+            <div class="row border p-2 my-2">
+            <div class="col-md-4">
+                <img src="{{item.product.product_image.url}}" style="height:100px;width:75px" alt="" srcset="">
+            </div>
+            <div class="col-md-8">
+                <div class=""><span class="fs-5">Title :</span>{{item.product.title}}</div>
+                <div><span class="fs-5">Brand :</span>{{item.product.brand}}</div>
+                <div><span class="fs-5">Quantity : </span>{{item.quantity}}</div>
+                <div><span class="fs-5">Total Amount : </span>Rs.{{item.total_amount}}</div>
+            </div>
+            </div>
+            
+            {% endfor %}
+    </div>      
+    </div>
+    <div class="col-md-5">
+    <div class="text-center fs-5 text-primary">Please Select or Add Your Address Before Countinue
+        <a href="{% url 'add_address' %}" class=" rounded-pill ">Add Address</a>
+    </div>
+    <form action="/payment_done" method="get">
+        {% for address in address %}
+        <div class="fw-bold">Address : {{forloop.counter}}</div>
+    <input type="radio" class="btn-check" name="address" id="success-outlined{{forloop.counter}}" value="{{address.id}}">
+    
+    <label class="btn btn-outline-success text-start my-2 w-100" for="success-outlined{{forloop.counter}}">
+            
+        <div class="fst-italic" >
+            {{address.street}} , {{address.village}} <br>{{address.district}} , {{address.state}},
+            {{address.pin_code}} <br>Mobile Number : {{address.mobile}}
+        </div>
+    </label>
+    {% endfor %}
+
+    <div class="text-center my-3">
+        <input type="submit" value="Continue" class="btn btn-sm btn-warning fw-bold" style="width:200px" >
+    </div>
+    </form>
+    </div>
+
+</div>
+{% endblock main %}
+

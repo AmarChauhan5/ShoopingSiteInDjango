@@ -1,0 +1,39 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}VESIT | Product Details{% endblock title %}
+
+
+{% block main %}
+<div class="row">
+    <div class="col-md-4 my-md-5 text-center">
+        <img src={{product.product_image.url}} alt="Mobile" srcset="" style="height:300px" >
+    </div>
+
+    <div class="col-md-6 offset-md-2" >
+
+    <p class="fw-normal fs-4 border-bottom mt-md-4 mt-sm-2 "> Description :</p>
+    <p class="fw-normal fs-4"> {{product.description}}</p>
+
+    <!--Price Div-->
+    <div class="my-md-4">
+        <p class="fw-normal fs-4">Rs.{{product.selling_price}} <span class=" text-decoration-line-through fs-5 text-muted">{{product.discounted_price}}</span></p>
+    </div>
+       
+    
+<!--Button Div-->
+    <div class="text-center mt-md-5">
+    <form action="/add_to_cart/" method="get">
+    <input type="hidden" name="product_id" value={{product.id}} disable>
+    <button type="submit" class="btn btn-sm btn-secondary rounded-pill  shadow p-3 mb-5  rounded mx-2 " style="width:200px">Add To Cart</button>
+    <button type="submit" class="btn btn-sm btn-success rounded-pill shadow p-3 mb-5  rounded mx-2 " style="width:200px">Buy Know</button>
+    </form>
+        
+        
+    </div>
+   
+    
+
+    
+    </div>
+</div>
+
+{% endblock main %}

@@ -1,0 +1,23 @@
+{% extends 'shopapp/base.html' %}
+{% load static %}
+{% block title %}VESIT | Home{% endblock title %}
+
+{% block banner %}
+    <div class="row">
+        {% include 'shopapp/banner.html' %}
+    </div>
+{% endblock banner %}
+
+{% block livesale %}
+    <div class="row">
+      <img src="{% static 'images/sale2.jpg' %}" class="w-100" alt="Live Sale">
+    </div>
+{% endblock livesale %}
+
+{% block main %}
+<!--Main Contain in Carousel-->
+
+{% include 'shopapp/main.html' %}
+
+
+{% endblock main %}

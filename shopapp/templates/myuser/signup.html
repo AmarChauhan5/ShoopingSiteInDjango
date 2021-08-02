@@ -1,0 +1,50 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}SignUp{% endblock title %}
+
+{% block main %}
+    
+<div class="row m-auto">
+
+   
+     
+    <div class="col-md-5 m-auto p-sm-0 border p-md-3 my-3 shadow-lg p-3 mb-5 bg-body rounded">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    {{message}}
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+    {% endfor %}
+    {% endif %}
+
+        <h2 class="text-center text-primary">Registration</h2>
+        <form action="" method="post"  class="" novalidate>
+        
+            {% csrf_token %}
+    
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    {{error}}
+                {% endfor %}
+            {% endif %}
+
+            {% for form in form %}
+                <div class="my-2">
+                    <span class="fw-normal fs-5">{{form.label_tag}}</span>
+                    {{form}} <span class="text-danger">{{form.errors|striptags}}</span>
+                </div>
+            {% endfor %}
+
+            <div class="my-2 text-center">
+                <input type="submit" value="Submit" class="btn btn-primary rounded-pill" style="width:250px">
+            </div>
+    
+        </form>
+        <a href="{% url 'password_reset' %}" class=" d-block" > <span class="fw-normal fs-6"> Forget Password</span> </a>
+        <a href="{% url 'login' %}" class=" d-block"> <span class="fw-normal fs-6">Alredy Created ? Login</span> </a>
+    </div>
+</div>
+ 
+{% endblock main %}

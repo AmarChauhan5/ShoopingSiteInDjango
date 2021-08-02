@@ -1,0 +1,41 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}Email{% endblock title %}
+
+{% block main %}
+
+        <div class="row m-auto">  
+    <div class="col-md-4 m-auto p-sm-1 border p-md-3 my-3 shadow-sm p-2 mb-3 bg-body rounded">
+        
+    <div class="fs-4">
+        <div class="text-center ">
+        <label for="email">Enter Email :</label> <input type="text" name="email" id="email" class="form-control form-control-sm"placeholder="e.g: abc@gmail.com">
+        <p id="check_mail" class="check_mail font-monospace text-primary m-0 p-0" style="display:none" >Check Your Email For OTP.</p>
+            <button class="send_otp btn btn-sm btn-primary my-1">Send OTP</button>
+        </div>
+
+    <div class=" text-center" style="display:none;" id="verify-div">
+        <label for="otp-verify" class="d-inline">Enter OTP :</label> 
+        <div class="text-center"><input type="text" name="otp-verify" id="otp-verify" class="otp form-control form-control-sm text-center"></div>
+        <p id="verify" style="display:none" class="font-monospace m-0 p-0"></p>
+        <button class="verify_otp btn btn-sm btn-primary my-1">Verify OTP</button>
+    </div>
+
+    <form action="/registration" method="GET" class="my-md-2">
+        <input type="email" class="form-control" name="email_b" id="email_b" style="display:none">
+        <input type="submit" value="Submit" class="btn btn-warning w-100 " id="submit" disabled="True" >
+    </form>
+
+     <a href="{% url 'password_reset' %}" class=" d-block" > <span class="fw-normal fs-6"> Forget Password</span> </a>
+        <a href="{% url 'login' %}" class=" d-block"> <span class="fw-normal fs-6">Alredy Created ? Login</span> </a>
+    
+    </div>
+        
+    </div>
+    
+   
+
+</div>
+
+    
+
+{% endblock main %}

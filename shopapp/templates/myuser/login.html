@@ -1,0 +1,41 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% block main %}
+    
+<div class="row m-auto">  
+    <div class="col-md-4 m-auto p-sm-0 border p-md-5 my-5 shadow-lg p-3 mb-5 bg-body rounded">
+        <h2 class="text-center text-primary">Login Page</h2>
+        <form action="" method="post"  class="" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <div class="text-danger border border-danger border-2 rounded-pill p-3">{{error}}</div>
+                {% endfor %}
+            {% endif %}
+
+            {% for form in form %}
+                <div class="my-2">
+                    <span class="fw-normal fs-5">{{form.label_tag}}</span>
+                    {{form}}
+                    <span class="text-danger">{{form.errors|striptags}}</span>
+                </div>
+            {% endfor %}
+
+            <div class="my-2 text-center">
+                <input type="submit" value="Login" class="btn btn-ms btn-success rounded-pill" style="width:250px">
+            </div>
+    
+        </form>
+         <a href="{% url 'password_reset' %}" class=" d-block" > <span class="fw-normal fs-6"> Forget Password</span> </a>
+         <a href="{% url 'signup' %}" class=" d-block" > <span class="fw-normal fs-6"> Create Account</span> </a>
+    
+    </div>
+    
+   
+
+</div>
+ 
+{% endblock main %}

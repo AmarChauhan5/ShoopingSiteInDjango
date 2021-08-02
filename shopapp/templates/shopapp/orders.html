@@ -1,0 +1,71 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}VESIT | My Order{% endblock title %}
+
+{% block banner %}
+<div class="container-fluid  px-sm-0">
+    {% if order %}
+    {% for order in order %}
+    <div class="row border shadow p-2 mb-2 rounded p-md-2 p-sm-1 m-md-5">
+
+        <div class="col-md-4 text-center">
+            <img src="{{order.product.product_image.url}}" alt="" >
+        </div>
+
+    <div class="col-md-5 ">
+        <table class="table table-borderless table-sm fw-normal font-monospace">
+  <tbody>
+    <tr>
+      <th scope="row">Description</th>
+      <td>{{order.product.description}}</td>  
+    </tr>
+    <tr>
+      <th scope="row">Quantity </th>
+      <td>{{order.quantity}}</td>  
+    </tr>
+     <tr>
+      <th scope="row">Amount </th>
+      <td>Rs.{{order.total_amount}}</td>  
+    </tr>
+   
+        <tr>
+            <td colspan="2" class="text-end fs-6 ">
+                <ul class="list-unstyled multi-steps fs-6">
+                    <li class="{% if order.status == 'P' %}is-active{% endif %}"><span class="fs-6">Pending</span></li>
+                    <li class="{% if order.status == 'A' %}is-active{% endif %}"><span class="fs-6">Accepted</span></li>
+                    <li class="{% if order.status == 'PD' %}is-active{% endif %}"><span class="fs-6">Packed</span></li>
+                    <li class="{% if order.status == 'OTW' %}is-active{% endif %}"><span class="fs-6">On The Way</span></li>
+                    <li class="{% if order.status == 'D' %}is-active{% endif %}"><span class="fs-6">Delivered</span></li>
+                </ul>
+            </td>
+        </tr>
+    <tr>
+        <td colspan="2" class="text-end fs-6 text-muted">{{order.order_date}}</td>
+    </tr>
+
+  </tbody>
+</table>         
+        </div>
+
+    <div class="col-md-3">
+        <div class="fw-normal border-bottom">Address :</div>
+            <div class="fst-italic" >
+                {{order.address.street}} , {{order.address.village}} <br>{{order.address.district}} , {{address.state}},
+                {{order.address.pin_code}} <br>Mobile Number : {{order.address.mobile}}
+            </div>
+        </div>   
+    </div>
+    {% endfor %}
+    {% else %}
+     <div class="row m-auto">  
+    <div class="col-md-5 m-auto p-sm-0 border p-md-5 my-5 shadow-lg p-3 mb-5 bg-body rounded">
+        <p class="baloo text-primary fs-4 text-center">
+            No Order available  <a href="{% url 'home' %}" class ="d-block">Home</a>
+        </p>
+        
+    </div>
+    
+</div>
+    {% endif %}
+
+</div>
+{% endblock banner %}
