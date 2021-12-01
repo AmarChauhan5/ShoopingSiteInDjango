@@ -1,19 +1,11 @@
 # Shopping website using Django Framework
-<br />
-Backend Python
-<br />
-Database sqlLite
-<br />
-Bootstrap
-<br />
-Font awesome icons
-<br />
-Email service SMTP
-<br />
-<hr />
 
-<a href="http://vesit05.pythonanywhere.com/">Visit vesit05.pythonanywhere.com</a>
-<hr />
+### `Backend Python`
+### `Database sqlLite`
+### `Bootstrap`
+### `Font awesome icons`
+### `Email service SMTP`
+## <a href="http://vesit05.pythonanywhere.com/">Visit vesit05.pythonanywhere.com</a>
 
 # Feature
 1.Sign up with email OTP(for OTP i use SMTP server).
